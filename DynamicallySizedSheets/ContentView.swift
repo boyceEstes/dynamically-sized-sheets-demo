@@ -41,22 +41,25 @@ struct ContentView: View {
     
     func sheetyChatContent() -> some View {
         
-        VStack {
-            Text("Hello World")
-                .messageBackground()
-            Text("You're looking good. You come to this solar system often?")
-                .messageBackground()
-            Text("Thank you for noticing. I've been doing something different with my dirt")
-                .messageBackground(isYou: false)
-            Text("And no. Here for a little worlds-trip")
-                .messageBackground(isYou: false)
+        NavigationStack {
+            VStack {
+                Text("Hello World")
+                    .messageBackground()
+                Text("You're looking good. You come to this solar system often?")
+                    .messageBackground()
+                Text("Thank you for noticing. I've been doing something different with my dirt")
+                    .messageBackground(isYou: false)
+                Text("And no. Here for a little worlds-trip")
+                    .messageBackground(isYou: false)
+            }
+            .padding(.horizontal)
+            .padding(.vertical)
+            .navigationTitle("Hello, World")
+            .heightChangePreference(completion: { height in
+                print("height: \(height)")
+                sheetHeight = height
+            })
         }
-        .padding(.horizontal)
-        .padding(.vertical)
-        .heightChangePreference(completion: { height in
-            print("height: \(height)")
-            sheetHeight = height
-        })
     }
 }
 
